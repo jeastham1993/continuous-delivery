@@ -19,6 +19,8 @@ ProjectSection(SolutionItems) = preProject
 	acceptance.bat = acceptance.bat
 	commit.bat = commit.bat
 	.github\workflows\main.yml = .github\workflows\main.yml
+	commit.sh = commit.sh
+	acceptance.sh = acceptance.sh
 EndProjectSection
 EndProject
 Global

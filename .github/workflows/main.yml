@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         dotnet-version: ['5.0.x' ]
@@ -21,12 +21,12 @@ jobs:
           dotnet-version: ${{ matrix.dotnet-version }}
           
       - name: Commit tests
-        shell: cmd
-        run: ./commit.bat
+        shell: bash
+        run: ./commit.sh
         
       - name: Automated Acceptance Tests
-        shell: cmd
-        run: ./acceptance.bat
+        shell: bash
+        run: ./acceptance.sh
         
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
