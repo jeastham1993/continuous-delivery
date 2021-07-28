@@ -15,9 +15,9 @@ jobs:
       - name: Run a multi-line script
         shell: bash
         run: |
-          ./commit.bat
+          sudo ./commit.bat
         
       - name: Run a multi-line script
         shell: bash
         run: |
-          ./acceptance.bat
+          sudo ./acceptance.bat
