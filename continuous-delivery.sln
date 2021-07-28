@@ -15,8 +15,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JEasthamDev.UnitTest", "tes
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{DEF6BABC-CE0B-4CE5-AE30-B41537C76EE6}"
 ProjectSection(SolutionItems) = preProject
-	build.cmd = build.cmd
 	src\JEasthamDev.Api\Dockerfile = src\JEasthamDev.Api\Dockerfile
+	acceptance.cmd = acceptance.cmd
+	commit.cmd = commit.cmd
 EndProjectSection
 EndProject
 Global
