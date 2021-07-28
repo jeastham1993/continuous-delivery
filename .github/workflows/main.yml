@@ -40,7 +40,7 @@ jobs:
         uses: aws-actions/amazon-ecr-login@v1
         
       - name: Build, tag, and push image to Amazon ECR
-        shell: powershell 
+        shell: bash
         run: |
           docker tag jeasthamdev-api ${{ steps.login-ecr.outputs.registry }}/jeasthamdev-api:${{ github.sha }}
           docker push ${{ steps.login-ecr.outputs.registry }}/jeasthamdev-api:${{ github.sha }}
