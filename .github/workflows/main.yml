@@ -14,10 +14,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: Run a multi-line script
         shell: bash
-        run: |
-          sudo ./commit.bat
+        run: ./commit.bat
         
       - name: Run a multi-line script
         shell: bash
-        run: |
-          sudo ./acceptance.bat
+        run: ./acceptance.bat
