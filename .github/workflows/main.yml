@@ -42,5 +42,5 @@ jobs:
       - name: Build, tag, and push image to Amazon ECR
         shell: powershell 
         run: |
-          docker tag jeasthamdev-api ${{ steps.login-ecr.outputs.registry }}/jeasthamdev-api/${{ github.sha }}
-          docker push ${{ steps.login-ecr.outputs.registry }}/jeasthamdev-api/${{ github.sha }}
+          docker tag jeasthamdev-api ${{ steps.login-ecr.outputs.registry }}/jeasthamdev-api:${{ github.sha }}
+          docker push ${{ steps.login-ecr.outputs.registry }}/jeasthamdev-api:${{ github.sha }}
