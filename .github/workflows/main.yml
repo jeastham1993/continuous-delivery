@@ -23,10 +23,10 @@ jobs:
       - name: Run a multi-line script
         shell: cmd
         run: |
-          .\commit.cmd
+          commit.bat
           
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         shell: cmd
         run: |
-          .\acceptance.cmd
+          acceptance.bat
