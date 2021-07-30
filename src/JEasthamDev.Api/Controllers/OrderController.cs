@@ -20,11 +20,11 @@ namespace JEasthamDev.Api.Controllers
 
         public OrderController(ILogger<OrderController> logger, IMediator mediator, Orders order)
         {
-            _logger = logger;
+            this._logger = logger;
             this._mediator = mediator;
-            _order = order;
+            this._order = order;
         }
-        
+
         [HttpGet("{emailAddress}")]
         public async Task<IActionResult> GetCustomerOrders(string emailAddress)
         {
@@ -32,7 +32,7 @@ namespace JEasthamDev.Api.Controllers
 
             return this.Ok(orders);
         }
-        
+
         [HttpGet("{emailAddress}/{orderNumber}/detail")]
         public async Task<IActionResult> GetOrder(string emailAddress, string orderNumber)
         {
@@ -40,12 +40,12 @@ namespace JEasthamDev.Api.Controllers
 
             return this.Ok(orders);
         }
-        
+
         [HttpPost]
         public async Task<IActionResult> CreateOrder([FromBody] CreateOrderCommand command)
         {
             this._logger.LogInformation("Received create order request");
-            
+
             await this._mediator.Send(command).ConfigureAwait(false);
 
             return this.Ok();

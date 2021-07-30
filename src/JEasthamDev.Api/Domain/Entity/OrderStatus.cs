@@ -4,6 +4,6 @@ namespace JEasthamDev.Api.Domain.Entity
     {
         NEW,
         INSTOCK,
-        COMPLETED
+        COMPLETED,
     }
 }

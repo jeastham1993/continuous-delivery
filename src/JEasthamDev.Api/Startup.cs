@@ -22,7 +22,7 @@ namespace JEasthamDev.Api
     {
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            this.Configuration = configuration;
         }
 
         public IConfiguration Configuration { get; }
@@ -40,7 +40,7 @@ namespace JEasthamDev.Api
             services.AddMediatR(typeof(Startup).GetTypeInfo().Assembly);
 
             services.AddControllers();
-            
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "JEasthamDev.Api", Version = "v1" });
@@ -63,10 +63,7 @@ namespace JEasthamDev.Api
 
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }
 }

@@ -9,23 +9,23 @@ using MediatR;
 
 namespace JEasthamDev.Api.Domain.Commands.CreateOrder
 {
-	public class CreateOrderCommandHandler : IRequestHandler<CreateOrderCommand>
-	{
-		private readonly Orders _orders;
+    public class CreateOrderCommandHandler : IRequestHandler<CreateOrderCommand>
+    {
+        private readonly Orders _orders;
 
-		public CreateOrderCommandHandler(Orders orders)
-		{
-			this._orders = orders;
-		}
-		
-		/// <inheritdoc />
-		public async Task<Unit> Handle(CreateOrderCommand request, CancellationToken cancellationToken)
-		{
-			var order = Order.CreateNew(request.CustomerId);
+        public CreateOrderCommandHandler(Orders orders)
+        {
+            this._orders = orders;
+        }
 
-			await this._orders.Store(order).ConfigureAwait(false);
+        /// <inheritdoc />
+        public async Task<Unit> Handle(CreateOrderCommand request, CancellationToken cancellationToken)
+        {
+            var order = Order.CreateNew(request.CustomerId);
 
-			return Unit.Value;
-		}
-	}
+            await this._orders.Store(order).ConfigureAwait(false);
+
+            return Unit.Value;
+        }
+    }
 }
