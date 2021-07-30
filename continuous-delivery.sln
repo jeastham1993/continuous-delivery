@@ -21,6 +21,11 @@ EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JEasthamDev.AcceptanceTests", "test\JEasthamDev.AcceptanceTests\JEasthamDev.AcceptanceTests.csproj", "{40220FA6-6BAB-4F41-BCD9-CE3778C6E460}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "order-api", "order-api", "{F51BF70F-A8F6-4C17-8C97-F07F5B9B6995}"
+ProjectSection(SolutionItems) = preProject
+	copilot\order-api\manifest.yml = copilot\order-api\manifest.yml
+EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,5 +80,6 @@ Global
 		{2AFCAC23-123D-4F07-A988-4878EB92F403} = {C24551BD-16D8-4E59-9A65-E7B90A52CEE5}
 		{4279D982-1BF9-44C9-9BA1-C2844F51A868} = {B337A75C-B09E-493C-B888-808CF984792B}
 		{40220FA6-6BAB-4F41-BCD9-CE3778C6E460} = {B337A75C-B09E-493C-B888-808CF984792B}
+		{F51BF70F-A8F6-4C17-8C97-F07F5B9B6995} = {DEF6BABC-CE0B-4CE5-AE30-B41537C76EE6}
 	EndGlobalSection
 EndGlobal
