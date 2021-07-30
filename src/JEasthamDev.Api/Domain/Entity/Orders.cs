@@ -11,6 +11,8 @@ namespace JEasthamDev.Api.Domain.Entity
 	{
 		Task Store(Order order);
 
+		Task<Order> GetOrder(string orderNumber);
+
 		Task<List<Order>> GetCustomerOrders(string emailAddress);
 	}
 }

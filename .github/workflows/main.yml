@@ -48,3 +48,17 @@ jobs:
           docker tag jeasthamdev-api ${{ steps.login-ecr.outputs.registry }}/jeasthamdev-api:latest
           docker push ${{ steps.login-ecr.outputs.registry }}/jeasthamdev-api:${{ github.sha }}
           docker push ${{ steps.login-ecr.outputs.registry }}/jeasthamdev-api:latest
+
+      - name: Install github copilot
+        shell: bash
+        run: brew install aws/tap/copilot-cli
+
+      - name: Copilot deploy
+        shell: bash
+        run: copilot deploy
+
+      - name: Automated Acceptance Tests
+        shell: bash
+        run: ./acceptance.sh
+        env:
+          API_URL: 'http://order-publi-1a6a4objoo0qh-1385938868.eu-west-2.elb.amazonaws.com'

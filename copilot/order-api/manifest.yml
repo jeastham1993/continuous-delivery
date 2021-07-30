@@ -10,13 +10,13 @@ type: Load Balanced Web Service
 http:
   # Requests to this path will be forwarded to your service.
   # To match all requests you can use the "/" path.
-  path: '/health'
+  path: '/'
   # You can specify a custom health check path. The default is "/".
-  # healthcheck: '/'
+  healthcheck: '/health'
 
 # Configuration for your containers and service.
 image:
-  location: 469909854323.dkr.ecr.eu-west-2.amazonaws.com/jeasthamdev-api:7a50bb8b7a3b0c421dc53d04a8d52e8342f36b23
+  location: 469909854323.dkr.ecr.eu-west-2.amazonaws.com/jeasthamdev-api:latest
   # Port exposed through your container to route traffic to it.
   port: 80
 

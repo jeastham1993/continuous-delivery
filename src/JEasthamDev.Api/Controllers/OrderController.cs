@@ -33,6 +33,14 @@ namespace JEasthamDev.Api.Controllers
             return this.Ok(orders);
         }
         
+        [HttpGet("{emailAddress}/{orderNumber}/detail")]
+        public async Task<IActionResult> GetOrder(string emailAddress, string orderNumber)
+        {
+            var orders = await this._order.GetOrder(orderNumber);
+
+            return this.Ok(orders);
+        }
+        
         [HttpPost]
         public async Task<IActionResult> CreateOrder([FromBody] CreateOrderCommand command)
         {
