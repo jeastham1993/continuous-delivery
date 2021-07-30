@@ -55,7 +55,7 @@ jobs:
 
       - name: Copilot deploy
         shell: bash
-        run: copilot deploy
+        run: copilot deploy --tag ${{ github.sha }}1
 
       - name: Automated Acceptance Tests
         shell: bash
