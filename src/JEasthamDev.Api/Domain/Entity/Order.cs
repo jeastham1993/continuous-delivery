@@ -13,6 +13,8 @@ namespace JEasthamDev.Api.Domain.Entity
 		public string OrderNumber { get; private set; }
 		
 		public DateTime OrderDate { get; private set; }
+		
+		public OrderStatus Status { get; private set; }
 
 		public static Order CreateNew(string emailAddress)
 		{
@@ -26,7 +28,8 @@ namespace JEasthamDev.Api.Domain.Entity
 			{
 				CustomerId = emailAddress,
 				OrderDate = DateTime.Now,
-				OrderNumber = $"{DateTime.Now:yyMMdd}{Guid.NewGuid().ToString().Split('-')[0]}"
+				OrderNumber = $"{DateTime.Now:yyMMdd}{Guid.NewGuid().ToString().Split('-')[0]}",
+				Status = OrderStatus.NEW
 			};
 		}
 	}
