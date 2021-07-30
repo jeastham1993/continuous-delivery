@@ -53,6 +53,10 @@ jobs:
         shell: bash
         run: brew install aws/tap/copilot-cli
 
+      - name: Add new image tag to copilot manifest
+        shell: bash
+        run: sed -i 's/((imageTag))/${{ github.sha }}/' copilot/order-api/manifest.yml
+        
       - name: Copilot deploy
         shell: bash
         run: copilot deploy --tag ${{ github.sha }}1

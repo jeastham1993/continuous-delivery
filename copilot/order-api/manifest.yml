@@ -6,7 +6,7 @@ http:
   healthcheck: '/health'
 
 image:
-  location: 469909854323.dkr.ecr.eu-west-2.amazonaws.com/jeasthamdev-api
+  location: 469909854323.dkr.ecr.eu-west-2.amazonaws.com/jeasthamdev-api:((imageTag))
   port: 80
 
 cpu: 256
