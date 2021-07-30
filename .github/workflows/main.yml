@@ -25,20 +25,6 @@ jobs:
       - name: Commit tests
         shell: bash
         run: ./commit.sh
-        
-      - name: Sonarscanner for dotnet
-        uses: Secbyte/dotnet-sonarscanner@v2.3
-        with:
-          buildCommand: dotnet build .
-          testCommand: dotnet test .
-          projectKey: jeastham1993_continuous-delivery
-          projectName: continuous-delivery
-          sonarOrganisation: jeastham1993-github
-          beginArguments: >
-            /d:sonar.verbose="true"
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
       - name: Automated Acceptance Tests
         shell: bash
