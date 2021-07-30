@@ -4,7 +4,7 @@
 
 using System;
 
-namespace JEasthamDev.AcceptanceTest
+namespace JEasthamDev.AcceptanceTests.Drivers
 {
 	public class TestConstants
 	{
