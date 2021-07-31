@@ -13,7 +13,6 @@ namespace JEasthamDev.Infrastructure
 
 		public static bool IsDocker => Environment.GetEnvironmentVariable("IS_DOCKER") != null;
 
-		public static string TableName =>
-			IsLocal || IsDocker ? "jeasthamdev-api-events" : Environment.GetEnvironmentVariable("TABLE_NAME");
+		public static string TableName => "jeasthamdev-api-events";
 	}
 }
