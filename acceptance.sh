@@ -12,6 +12,8 @@ awslocal cloudformation deploy --template-file ./infrastructure/infrastructure.y
 
 sleep 10s
 
+awslocal cloudformation list-stack-resources --stack-name jeasthamdev-api
+
 dotnet test test/JEasthamDev.AcceptanceTests/JEasthamDev.AcceptanceTests.csproj
 
 docker build -f ./src/JEasthamDev.Api/Dockerfile -t jeasthamdev-api .

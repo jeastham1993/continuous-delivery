@@ -17,6 +17,7 @@ ProjectSection(SolutionItems) = preProject
 	.github\workflows\main.yml = .github\workflows\main.yml
 	commit.sh = commit.sh
 	acceptance.sh = acceptance.sh
+	.github\workflows\deploy-infrastructure.yml = .github\workflows\deploy-infrastructure.yml
 EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JEasthamDev.AcceptanceTests", "test\JEasthamDev.AcceptanceTests\JEasthamDev.AcceptanceTests.csproj", "{40220FA6-6BAB-4F41-BCD9-CE3778C6E460}"
