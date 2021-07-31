@@ -4,9 +4,9 @@
 
 using MediatR;
 
-namespace JEasthamDev.Api.Domain.Commands.CreateOrder
+namespace JEasthamDev.Core.Commands.CreateOrder
 {
-	public class CreateOrderCommand : IRequest
+	public class CreateOrderCommand : IRequest<CreateOrderResponse>
 	{
 		public string CustomerId { get; set; }
 	}

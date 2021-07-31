@@ -18,5 +18,9 @@
 <ItemGroup>
     <AdditionalFiles Include="stylecop.json" />
 </ItemGroup>
+<ItemGroup>
+  <ProjectReference Include="..\JEasthamDev.Core\JEasthamDev.Core.csproj" />
+  <ProjectReference Include="..\JEasthamDev.Infrastructure\JEasthamDev.Infrastructure.csproj" />
+</ItemGroup>
 
 </Project>

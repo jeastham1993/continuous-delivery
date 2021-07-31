@@ -1,6 +1,6 @@
 using System;
 using FluentAssertions;
-using JEasthamDev.Api.Domain.Entity;
+using JEasthamDev.Core.Entity;
 using Xunit;
 
 namespace JEasthamDev.UnitTest

@@ -3,8 +3,9 @@
 // ------------------------------------------------------------
 
 using System;
+using JEasthamDev.Core.Events;
 
-namespace JEasthamDev.Api.Domain.Entity
+namespace JEasthamDev.Core.Entity
 {
     public class Order
     {
@@ -32,6 +33,14 @@ namespace JEasthamDev.Api.Domain.Entity
                 OrderNumber = $"{DateTime.Now:yyMMdd}{Guid.NewGuid().ToString().Split('-')[0]}",
                 Status = OrderStatus.NEW,
             };
+        }
+
+        public void Apply(OrderCreatedOrderEvent evt)
+        {
+            this.CustomerId = evt.CustomerId;
+            this.OrderNumber = evt.OrderNumber;
+            this.OrderDate = evt.OrderDate;
+            this.Status = OrderStatus.NEW;
         }
     }
 }

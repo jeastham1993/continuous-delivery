@@ -117,7 +117,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When("a new order is created", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 8
- testRunner.Then("a new order should be created for the email address test@test.com", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the order should be found in the database", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

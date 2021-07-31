@@ -5,7 +5,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace JEasthamDev.Api.Domain.Entity
+namespace JEasthamDev.Core.Entity
 {
 	public interface Orders
 	{

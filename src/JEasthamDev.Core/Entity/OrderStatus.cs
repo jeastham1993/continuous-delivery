@@ -1,4 +1,4 @@
-namespace JEasthamDev.Api.Domain.Entity
+namespace JEasthamDev.Core.Entity
 {
     public enum OrderStatus
     {

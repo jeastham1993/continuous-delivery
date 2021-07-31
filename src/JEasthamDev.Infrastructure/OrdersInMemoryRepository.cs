@@ -6,9 +6,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using JEasthamDev.Api.Domain.Entity;
+using JEasthamDev.Core.Entity;
 
-namespace JEasthamDev.Api.Infrastructure
+namespace JEasthamDev.Infrastructure
 {
     public class OrdersInMemoryRepository : Orders
     {

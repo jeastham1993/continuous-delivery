@@ -13,8 +13,10 @@ namespace JEasthamDev.AcceptanceTests.Steps
         // For additional details on SpecFlow step definitions see https://go.specflow.org/doc-stepdef
 
         private readonly ScenarioContext _scenarioContext;
-        private readonly OrderDriver _orderDriver;
-        private string _emailAddress;
+        private readonly OrderDriver     _orderDriver;
+        private          string          _emailAddress;
+        private          string          _createdOrderNumber;
+        
 
         public OrderStepDefinitions(ScenarioContext scenarioContext)
         {
@@ -32,7 +34,7 @@ namespace JEasthamDev.AcceptanceTests.Steps
         [When(@"a new order is created")]
         public async Task WhenANewOrderIsCreated()
         {
-            await this._orderDriver.CreateOrder(this._emailAddress).ConfigureAwait(false);
+            this._createdOrderNumber = await this._orderDriver.CreateOrder(this._emailAddress).ConfigureAwait(false);
         }
 
         [Then(@"a new order should be created for the email address (.*)")]
@@ -41,6 +43,12 @@ namespace JEasthamDev.AcceptanceTests.Steps
             var customerOrders = await this._orderDriver.GetCustomerOrders(emailAddress);
 
             customerOrders.Any().Should().BeTrue();
+        }
+
+        [Then(@"the order should be found in the database")]
+        public async Task ThenTheOrderShouldBeFoundInTheDatabase()
+        {
+            (await this._orderDriver.GetOrder(this._createdOrderNumber)).OrderNumber.Should().NotBeNullOrEmpty();
         }
     }
 }

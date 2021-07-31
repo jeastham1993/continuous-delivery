@@ -6,3 +6,24 @@ services:
         dockerfile: ./src/JEasthamDev.Api/Dockerfile
     ports:
       - "5000:80"
+    environment:
+      - IS_DOCKER=true
+
+  localstack:
+    container_name: "${LOCALSTACK_DOCKER_NAME-localstack_main_jeastham_api}"
+    image: localstack/localstack
+    ports:
+      - "4566-4599:4566-4599"
+      - "${PORT_WEB_UI-8080}:${PORT_WEB_UI-8080}"
+    environment:
+      - SERVICES=s3,dynamodb,cloudformation,eventbridge,sqs,cloudwatch,lambda,ses,apigateway,iam,kinesis
+      - DEBUG=${DEBUG- }
+      - DATA_DIR=${DATA_DIR- }
+      - PORT_WEB_UI=${PORT_WEB_UI- }
+      - LAMBDA_EXECUTOR=${LAMBDA_EXECUTOR- }
+      - KINESIS_ERROR_PROBABILITY=${KINESIS_ERROR_PROBABILITY- }
+      - DOCKER_HOST=unix:///var/run/docker.sock
+      - HOST_TMP_FOLDER=${TMPDIR}
+    volumes:
+      - "${TMPDIR:-/tmp/localstack}:/tmp/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"

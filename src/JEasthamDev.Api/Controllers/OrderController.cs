@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using JEasthamDev.Api.Domain.Commands.CreateOrder;
-using JEasthamDev.Api.Domain.Entity;
+using JEasthamDev.Core.Commands.CreateOrder;
+using JEasthamDev.Core.Entity;
+using JEasthamDev.Core.Events;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -17,12 +18,14 @@ namespace JEasthamDev.Api.Controllers
         private readonly ILogger<OrderController> _logger;
         private readonly IMediator _mediator;
         private readonly Orders _order;
+        private readonly OrderEventStore _eventStore;
 
-        public OrderController(ILogger<OrderController> logger, IMediator mediator, Orders order)
+        public OrderController(ILogger<OrderController> logger, IMediator mediator, Orders order, OrderEventStore eventStore)
         {
             this._logger = logger;
             this._mediator = mediator;
             this._order = order;
+            this._eventStore = eventStore;
         }
 
         [HttpGet("{emailAddress}")]
@@ -33,12 +36,12 @@ namespace JEasthamDev.Api.Controllers
             return this.Ok(orders);
         }
 
-        [HttpGet("{emailAddress}/{orderNumber}/detail")]
-        public async Task<IActionResult> GetOrder(string emailAddress, string orderNumber)
+        [HttpGet("detail/{orderNumber}")]
+        public async Task<IActionResult> GetOrder(string orderNumber)
         {
-            var orders = await this._order.GetOrder(orderNumber);
+            var order = await this._eventStore.Get(orderNumber);
 
-            return this.Ok(orders);
+            return this.Ok(order);
         }
 
         [HttpPost]
@@ -46,9 +49,9 @@ namespace JEasthamDev.Api.Controllers
         {
             this._logger.LogInformation("Received create order request");
 
-            await this._mediator.Send(command).ConfigureAwait(false);
+            var response = await this._mediator.Send(command).ConfigureAwait(false);
 
-            return this.Ok();
+            return this.Ok(response);
         }
     }
 }

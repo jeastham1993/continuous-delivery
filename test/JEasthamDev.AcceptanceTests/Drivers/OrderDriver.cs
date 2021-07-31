@@ -9,15 +9,17 @@ namespace JEasthamDev.AcceptanceTests.Drivers
 {
     public class OrderDriver
     {
-        public async Task CreateOrder(string customerId)
+        public async Task<string> CreateOrder(string customerId)
         {
             using var client = new HttpClient();
 
-            await client.PostAsync($"{TestConstants.ApiUrl}/order", new StringContent(
+            var result = await client.PostAsync($"{TestConstants.ApiUrl}/order", new StringContent(
                 JsonConvert.SerializeObject(new CreateOrderRequest()
                 {
                     CustomerId = "test@test.com",
                 }), Encoding.UTF8, "application/json"));
+
+            return JsonConvert.DeserializeObject<Order>(await result.Content.ReadAsStringAsync()).OrderNumber;
         }
         
         public async Task<IEnumerable<Order>> GetCustomerOrders(string emailAddress)
@@ -27,6 +29,15 @@ namespace JEasthamDev.AcceptanceTests.Drivers
             var result = await client.GetAsync($"{TestConstants.ApiUrl}/order/{emailAddress}");
 
             return JsonConvert.DeserializeObject<IEnumerable<Order>>(await result.Content.ReadAsStringAsync());
+        }
+        
+        public async Task<Order> GetOrder(string orderNumber)
+        {
+            using var client = new HttpClient();
+
+            var result = await client.GetAsync($"{TestConstants.ApiUrl}/order/detail/{orderNumber}");
+
+            return JsonConvert.DeserializeObject<Order>(await result.Content.ReadAsStringAsync());
         }
     }
 

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
-using JEasthamDev.Api.Domain.Entity;
-using JEasthamDev.Api.Infrastructure;
+using JEasthamDev.Core.Entity;
+using JEasthamDev.Infrastructure;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,14 +30,18 @@ namespace JEasthamDev.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<Orders, OrdersInMemoryRepository>();
+#if  DEBUG
+            Settings.IsLocal = true;
+#endif
+
+            services.AddPersistence();
 
             services.AddCors(c =>
             {
                 c.AddPolicy("AllowOrigin", options => options.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
             });
 
-            services.AddMediatR(typeof(Startup).GetTypeInfo().Assembly);
+            services.AddMediatR(typeof(Startup).GetTypeInfo().Assembly, typeof(Order).Assembly);
 
             services.AddControllers();
 
