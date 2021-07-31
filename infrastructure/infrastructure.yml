@@ -18,3 +18,4 @@ Resources:
           AttributeName: "SK"
           KeyType: "RANGE"
       TableName: "jeasthamdev-api-events"
+      BillingMode: PAY_PER_REQUEST
